@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DefecScan | {% block title %}{% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f7fa;
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar {
+      background-color: #000000;
+    }
+    .navbar-brand {
+      color: #0d6efd;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+    }
+    .navbar-brand img {
+      height: 60px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #000000;
+      color: white;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      if (html.getAttribute('data-bs-theme') === 'light') {
+        html.setAttribute('data-bs-theme', 'dark');
+        document.body.style.backgroundColor = '#121212';
+      } else {
+        html.setAttribute('data-bs-theme', 'light');
+        document.body.style.backgroundColor = '#f5f7fa';
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='DefecScan_Logo.webp') }}" alt="DefecScan Logo">
+      DefecScan
+    </a>
+    <div class="d-flex">
+      <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-3">🌙 Toggle Dark Mode</button>
+      <a href="{{ url_for('about') }}" class="btn btn-outline-light ms-3">About Us</a>
+      <a href="{{ url_for('contact') }}" class="btn btn-outline-light ms-3">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Content Section -->
+<div class="container mt-5">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2025 DefecScan Technologies Pvt Ltd. All Rights Reserved.
+</footer>
+
+</body>
+</html>

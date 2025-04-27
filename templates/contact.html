@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | DefecScan</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f5f7fa;
+      color: #000;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    .navbar {
+      background-color: #000;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .navbar-dark {
+      background-color: #1c1c1c;
+    }
+    .navbar-brand {
+      color: #0d6efd;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      transition: color 0.5s;
+    }
+    .navbar-brand img {
+      height: 60px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 576px) {
+      .navbar-brand img {
+        height: 40px;
+      }
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background-color: #000;
+      color: white;
+      text-align: center;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    footer.dark-mode {
+      background-color: #1c1c1c;
+      color: #ccc;
+    }
+  </style>
+
+  <script>
+    function enableDarkMode() {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.navbar').classList.add('navbar-dark');
+      document.querySelector('footer').classList.add('dark-mode');
+      document.querySelector('.navbar-brand').style.color = '#90caf9';
+    }
+
+    function disableDarkMode() {
+      document.body.classList.remove('dark-mode');
+      document.querySelector('.navbar').classList.remove('navbar-dark');
+      document.querySelector('footer').classList.remove('dark-mode');
+      document.querySelector('.navbar-brand').style.color = '#0d6efd';
+    }
+
+    function toggleDarkMode() {
+      if (document.body.classList.contains('dark-mode')) {
+        disableDarkMode();
+        localStorage.setItem('darkMode', 'off');
+      } else {
+        enableDarkMode();
+        localStorage.setItem('darkMode', 'on');
+      }
+    }
+
+    window.onload = function() {
+      if (localStorage.getItem('darkMode') === 'on') {
+        enableDarkMode();
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='DefecScan_Logo.webp') }}" alt="DefecScan Logo">
+      DefecScan
+    </a>
+    <div class="d-flex">
+      <button onclick="toggleDarkMode()" class="btn btn-outline-light ms-3">🌙 Toggle Dark Mode</button>
+      <a href="{{ url_for('about') }}" class="btn btn-outline-light ms-3">About Us</a>
+      <a href="{{ url_for('contact') }}" class="btn btn-outline-light ms-3">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact Us Section -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <p><strong>Email:</strong> karthik.d1825@gmail.com</p>
+      <p><strong>Phone:</strong> 8328104172</p>
+      <p><strong>Office Address:</strong> CVR College of Engineering, Hyderabad, Telangana, India</p>
+      <p>Feel free to reach out to us with any queries regarding our AI wall defect detection services. We are happy to assist you!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2025 DefecScan Technologies Pvt Ltd.
+</footer>
+
+</body>
+</html>
